@@ -3,19 +3,13 @@ from scipy.stats import ttest_ind, bartlett
 from statistics import mean, variance
 
 # Defina o caminho para o arquivo CSV
-caminho = "/arquivo_modificado.csv"
+caminho = "arquivo_modificado.csv"
 
 # Leia o arquivo CSV
 dados = pd.read_csv(caminho)
 
 # Visualize os primeiros registros do dataframe
 print(dados.head())
-
-# Calcular a média e a variância da coluna 'Qtde' por cada valor distinto da coluna 'vin'
-media_var_por_vin = dados.groupby('vin')['Qtde'].agg(Media=lambda x: mean(x), Variancia=lambda x: variance(x)).reset_index()
-
-# Visualizar o resultado da média e variância por vin
-print(media_var_por_vin)
 
 # Calcular a média e a variância da coluna 'Qtde' por cada tipo de 'PN'
 media_var_por_PN = dados.groupby('PN')['Qtde'].agg(Media=lambda x: mean(x), Variancia=lambda x: variance(x)).reset_index()
