@@ -9,3 +9,8 @@ def get_df(uploaded_file = None):
     df['phantom']=df['phantom'].astype(str)
 
     return df
+
+def columns_are_not_ok(df):
+    is_columns_ok = all([col in df.columns for col in ["X","phantom","vin","PN","Qtde","Price"]])
+
+    return not is_columns_ok

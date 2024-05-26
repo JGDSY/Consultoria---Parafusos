@@ -16,9 +16,13 @@ def otimiza(qtde, price, multa):
 
     index_x = np.argmin(espaco_resultado)
 
-    return {'qtd_min': espaco_busca[0], 'qtd_max': espaco_busca[-1],
+    return {'qtd_min': espaco_busca[0], 
+            'qtd_max': espaco_busca[-1],
             'valor_recomendado': espaco_busca[index_x],
-            'custo_esperado': espaco_resultado[index_x]}
+            'custo_esperado': espaco_resultado[index_x],
+            'quantidade': espaco_busca,
+            'custos': espaco_resultado
+            }
 
 def calcular_valor_total(df):
     
@@ -32,6 +36,7 @@ def calcular_valor_total(df):
     df['Perc_Acum'] = df['Perc'].cumsum()
     
     # Problema: não é a melhor opção pois agora a coluna Total será string
+    # Não é problema: trata-se de variável local sem impacto global
     df['Total'] = df['Total'].map(lambda x: locale.currency(x, grouping=True))
     
     dfA = df.query('Perc_Acum<=80')
@@ -41,17 +46,16 @@ def calcular_valor_total(df):
 
 def get_recomendacoes(df, multa):
     df_precos = df.groupby('PN').agg({'Price':'mean'})
-    df_qtd = df.groupby(['phantom', 'PN']).agg(
-        {'Qtde':lambda x: list(x)}).reset_index()
+    df_qtd = df.groupby(['phantom', 'PN']).agg({'Qtde':lambda x: list(x)}).reset_index()
     df_qtd_preco = pd.merge(left=df_qtd, right=df_precos, on='PN', how='left')
     
-    resultados = pd.DataFrame(df_qtd_preco.apply(lambda x: otimiza(
-        x['Qtde'], x['Price'], multa), axis=1).to_list())
+    resultados = pd.DataFrame(
+        df_qtd_preco.apply(lambda x: otimiza(x['Qtde'], x['Price'], multa), axis=1).to_list()
+    )
+
     df_recomendacoes = pd.concat([df_qtd_preco, resultados], axis=1)
     
-    df_recomendacoes['Reducao'] = df_recomendacoes[
-        'qtd_max'] - df_recomendacoes['valor_recomendado']
-    df_recomendacoes = df_recomendacoes.sort_values(by='Reducao',
-                                                    ascending=False)
+    df_recomendacoes['Reducao'] = df_recomendacoes['qtd_max'] - df_recomendacoes['valor_recomendado']
+    df_recomendacoes = df_recomendacoes.sort_values(by='Reducao', ascending=False)
 
     return df_recomendacoes
