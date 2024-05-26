@@ -10,6 +10,7 @@ locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
 
 # Problema opcional: dividir o codigo em alguns arquivos separados
 #           por exemplo, funcoes, pagina1, pagina2
+# WIP
 
 def pagina1(df_recomendacoes):
 
@@ -69,9 +70,9 @@ def pagina1(df_recomendacoes):
         
     ax.axvline(x=str(posicao), color='r', linestyle='--', label='Recomendado')
 
-    ax.set_xlabel('Categorias')
+    ax.set_xlabel('Quantidade')
     ax.set_ylabel('Valores (R$)')
-    ax.set_title(f'Gráfico Qtde vs Custo ({phantom_exemplo}: {pn_exemplo})')
+    ax.set_title(f'Gráfico Qtde vs Custo (phantom {phantom_exemplo}: {pn_exemplo})')
     
     ax.legend()
     
@@ -93,7 +94,7 @@ def pagina3():
     st.write(npf.irr([-250000] + [33000] * 24))
     
 def manual():
-    st.write('Em construção')
+    st.write('WIP')
     
 def main():
     # Problema: eu gostaria de deixar esse filtro no top, porem não consegui
