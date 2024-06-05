@@ -1,0 +1,19 @@
+# Pastas
+venv/
+ENV/
+env/
+.venv/
+.env/
+.ipynb_checkpoints/
+.vscode/
+.idea/
+__pycache__/
+
+# Arquivos
+*.log
+*.temp
+*.tmp
+*.py[cod]
+*.so
+.DS_Store
+Thumbs.db
