@@ -49,4 +49,4 @@ Certifique-se de ter Python 3.10 ou superior instalado em seu sistema.
 
 ## Licença
 
-Este projeto está licenciado sob a Licença MIT. Veja o arquivo `LICENSE` para mais detalhes.
+Este projeto seguirá as diretrizes `CopyLeft`.
