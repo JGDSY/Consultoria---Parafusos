@@ -10,8 +10,8 @@ Certifique-se de ter Python 3.10 ou superior instalado em seu sistema.
 
 1. Clone este repositório:
     ```bash
-    git clone https://github.com/seu-usuario/SmartFix.git
-    cd SmartFix
+    git clone [https://github.com/seu-usuario/SmartFix.git](https://github.com/JGDSY/Consultoria-Parafusos.git)
+    cd Consultoria-Parafusos
     ```
 
 2. Crie um ambiente virtual (opcional, mas recomendado):
