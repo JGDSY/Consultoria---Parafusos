@@ -18,9 +18,9 @@ def main():
     if opcao_manual == "Relatório":
         with st.sidebar.expander("Páginas do Relatório", expanded = True):
             pagina_selecionada = st.radio("Selecione a página:", 
-                                          ["Qtdes recomendadas", 
+                                          ["Recomendações: KPIs e Gráficos", 
                                            "Estoque AB", 
-                                           "Indicadores financeiros"])
+                                           "ROI e Payback"])
 
     
     # Adicionar um menu para carregar um novo dataset
@@ -43,11 +43,11 @@ def main():
     df['phantom']=df['phantom'].astype(str)
     df_recomendacoes = get_recomendacoes(df, multa)
         
-    if pagina_selecionada == "Qtdes recomendadas":
+    if pagina_selecionada == "Recomendações: KPIs e Gráficos":
         pagina1(df_recomendacoes)
     elif pagina_selecionada == "Estoque AB":
         pagina2(df_recomendacoes)
-    elif pagina_selecionada == "Indicadores financeiros":
+    elif pagina_selecionada == "ROI e Payback":
         pagina3(df_recomendacoes)
     else:
         manual()
