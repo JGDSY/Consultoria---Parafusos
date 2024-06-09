@@ -79,11 +79,10 @@ def manual():
         Esta página exibe duas tabelas de estoque do tipo AB, que são usadas para classificar os itens em estoque com base em critérios como valor e volume de movimentação.
 
         #### Tabela 1:
-        - **Estoque A**: Inclui itens que representam uma alta porcentagem do valor total do estoque, mas uma pequena porcentagem do total de itens.
-        - **Estoque B**: Inclui itens que representam uma porcentagem intermediária tanto em termos de valor quanto de quantidade.
+        - **Estoque A**: Inclui os itens que correspondem a 80% do maior retorno com as otimizações realizadas. Ou seja, as unidades mais impactadas com os cálculos elaborados.
 
         #### Tabela 2:
-        - **Estoque B (Detalhado)**: Pode fornecer uma visão mais detalhada ou uma classificação refinada dos itens do estoque B, dependendo das necessidades específicas do usuário.
+        - **Estoque B**: Inclui os itens que correspondem os 20% dos itens de menos impacto com as otimizações.
 
         As tabelas de estoque AB ajudam na priorização de itens, focando na gestão eficiente dos itens que mais impactam financeiramente.
         """)
